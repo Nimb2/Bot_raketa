@@ -586,7 +586,7 @@ class EventBot:
         title = event['title']
         description = event['description']
         photo_id = event['photo_id']
-        caption = f"🎉 Новое событие:\n\n{title}\n\n{description}"
+        caption = f"{title}\n\n{description}"
         builder = InlineKeyboardBuilder()
         builder.button(text="Хочу участвовать", callback_data=f"apply_{event_id}")
         if photo_id:
@@ -1269,4 +1269,5 @@ class EventBot:
 
 if __name__ == '__main__':
     bot = EventBot()
+
     bot.run()
