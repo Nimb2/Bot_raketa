@@ -414,7 +414,7 @@ class EventBot:
             await self.bot.send_photo(chat_id, photo_id, caption=text, reply_markup=reply_markup)
         else:
             await self.bot.send_message(chat_id, text)
-            await self.bot.send_photo(chat_id, photo_id, caption="📎", reply_markup=reply_markup)
+            await self.bot.send_photo(chat_id, photo_id, caption="", reply_markup=reply_markup)
 
     async def cmd_start(self, message: types.Message, state: FSMContext):
         await state.clear()
@@ -1121,4 +1121,5 @@ class EventBot:
 
 if __name__ == '__main__':
     bot = EventBot()
+
     bot.run()
