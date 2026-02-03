@@ -521,7 +521,7 @@ class EventBot:
         if not events:
             keyboard = get_user_keyboard() if not self.is_admin(user_id) else get_admin_keyboard()
             await message.answer(
-                "извините пока что нет ожидайте следите за обновлением",
+                "🕗 Скоро появятся новые события — следи за анонсами!",
                 reply_markup=keyboard
             )
             return
@@ -1184,4 +1184,5 @@ class EventBot:
         self.db.close()
 if __name__ == '__main__':
     bot = EventBot()
+
     bot.run()
