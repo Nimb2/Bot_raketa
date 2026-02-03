@@ -502,7 +502,6 @@ class EventBot:
         await state.clear()
         if choice == "send_events_yes":
             await self.show_menu(callback_query.message)
-            # Отправляем клавиатуру после показа меню
             keyboard = get_user_keyboard() if not self.is_admin(user_id) else get_admin_keyboard()
             await callback_query.message.answer("Используй меню ниже для навигации:", reply_markup=keyboard)
         else:
@@ -513,7 +512,7 @@ class EventBot:
     async def handle_menu_button(self, message: types.Message):
         await self.show_menu(message)
     async def show_menu(self, message: types.Message):
-        user_id = message.from_user.id
+        user_id = message.chat.id  # ✅ ИСПРАВЛЕНО: было message.from_user.id
         user = self.db.get_user(user_id)
         if not user:
             await message.answer("Сначала зарегистрируйся через /start")
@@ -562,7 +561,7 @@ class EventBot:
         else:
             await callback_query.message.answer(caption, reply_markup=builder.as_markup())
     async def handle_rocket_menu_button(self, message: types.Message):
-        user_id = message.from_user.id
+        user_id = message.chat.id  # ✅ ИСПРАВЛЕНО: было message.from_user.id
         user = self.db.get_user(user_id)
         if not user:
             await message.answer("Сначала зарегистрируйся через /start")
@@ -1185,5 +1184,4 @@ class EventBot:
         self.db.close()
 if __name__ == '__main__':
     bot = EventBot()
-
     bot.run()
