@@ -16,7 +16,7 @@ from io import BytesIO
 # Настройка логирования
 logging.basicConfig(level=logging.INFO)
 # 🔑 Конфигурация — ВСЁ В КОДЕ
-BOT_TOKEN = "8215527179:AAH-Mm4-ePZEPCbh1P7B1HA_V7bV0TPsyk0"
+BOT_TOKEN = "8554779199:AAGdjsBeBYOsIkqMffCvDHvbElNWWul4VUA"
 ADMIN_IDS = [1565932131, 469946528]
 def get_user_keyboard():
     keyboard = ReplyKeyboardBuilder()
@@ -1185,4 +1185,5 @@ class EventBot:
         self.db.close()
 if __name__ == '__main__':
     bot = EventBot()
+
     bot.run()
